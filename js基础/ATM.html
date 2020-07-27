@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script>
+      var money = 100;
+      while (true) {
+        var option = Number(
+          prompt(
+            '请输入您的操作："\n""1.存钱"\n"2.取钱"\n"3.显示余额"\n"4.退出'
+          )
+        );
+        if (option == 1) {
+          var cashIn = Number(prompt("请输入你要存入的金额："));
+          money += cashIn;
+        }
+        if (option == 2) {
+          var cashOut = Number(prompt("请输入你要取走的金额："));
+          if (cashOut <= money) {
+            alert("本次取款" + cashOut);
+          } else {
+            alert("余额不足");
+            option = Number(
+              prompt(
+                '请输入您的操作："\n""1.存钱"\n"2.取钱"\n"3.显示余额"\n"4.退出'
+              )
+            );
+          }
+        }
+        if (option == 3) {
+          alert("您的余额为：" + money);
+        }
+        if (option == 4) {
+          alert("欢迎下次光临！");
+          break;
+        }
+      }
+    </script>
+  </head>
+  <body></body>
+</html>

@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <input type="text" name="" id="" value="手机" />
+    <script>
+      var text = document.querySelector("input");
+      //   分为获得焦点和是去焦点
+      text.onfocus = function () {
+        console.log("获得了焦点");
+        if (this.value === "手机") {
+          this.value = "";
+        }
+      };
+      text.onblur = function () {
+        if (this.value === "") {
+          this.value = "手机";
+        }
+      };
+    </script>
+  </body>
+</html>

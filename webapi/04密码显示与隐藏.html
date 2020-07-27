@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      .outer {
+        width: 600px;
+        height: 140px;
+        background-color: #666;
+        margin: 0 auto;
+      }
+      .name {
+        width: 100%;
+        height: 60px;
+        /* background-color: honeydew; */
+        padding: 10px 0;
+        margin-left: 100px;
+      }
+      .password {
+        width: 100%;
+        height: 60px;
+        /* background-color: honeydew; */
+        margin-left: 100px;
+      }
+      .password::after {
+        content: "";
+      }
+    </style>
+  </head>
+  <body>
+    <div class="outer">
+      <div class="name"><input type="text" name="" id="" /></div>
+      <div class="password">
+        <input type="password" name="" id="" /><button>显示密码</button>
+      </div>
+    </div>
+    <script>
+      var btn = document.querySelector("button");
+      var pwd = document.getElementsByTagName("input");
+      /*   btn.onclick = function () {
+        pwd[1].type = "text";
+      };
+      btn.onmousemove = function () {
+        pwd[1].type = "password";
+      }; */
+
+      //采用标志变量 控制
+      var isHidden = true;
+      btn.onclick = function () {
+        if (isHidden) {
+          pwd[1].type = "text";
+          isHidden = false;
+        } else {
+          pwd[1].type = "password";
+          isHidden = true;
+        }
+      };
+    </script>
+  </body>
+</html>

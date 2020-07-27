@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <ul>
+      <li>1</li>
+      <li>2</li>
+      <li>3</li>
+      <li>4</li>
+      <li>5</li>
+    </ul>
+    <script>
+      //parentNode  离元素最近的父节点 找不到返回空
+      //子节点  childNodes 集合 所有的子节点 包含 元素 文本等
+      //子节点  children 元素节点
+      //子节点 firstChild  lastChild 包含 元素 文本等
+      //firstElementChild last...
+      var fatherE = document.querySelector("ul");
+      console.log(fatherE.children);
+      console.log(fatherE.firstChild);
+      console.log(fatherE.lastChild);
+      console.log(fatherE.firstElementChild);
+    </script>
+  </body>
+</html>

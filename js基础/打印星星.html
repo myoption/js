@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script>
+      var rows = Number(prompt("请输入打印的行数："));
+      var cols = Number(prompt("请输入打印的星星数："));
+      var stars = "";
+      for (var j = 0; j < rows; j++) {
+        for (var i = 0; i < cols; i++) {
+          stars = stars + "☆";
+        }
+        stars = stars + "\n";
+      }
+      //   实际是打印一个结果，里面分成几行几列
+      console.log(stars);
+
+      //   打印三角形
+      /*  for (var i = 0; i < rows; i++) {
+        var stars = "";
+        for (var j = rows - i; j >= 1; j--) {
+          stars = stars + "☆";
+        }s
+        console.log(stars);
+      } */
+    </script>
+  </head>
+  <body></body>
+</html>

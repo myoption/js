@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script>
+      //构造函数创建对象
+      function CreateObj(uname, sex, age) {
+        this.name = uname;
+        this.sex = sex;
+        this.age = age;
+        this.sing = function (song) {
+          console.log(song);
+        };
+      }
+      var ldh = new CreateObj("略的话", "男", 18);
+      console.log(ldh);
+      ldh.sing("冰雨");
+    </script>
+  </head>
+  <body></body>
+</html>

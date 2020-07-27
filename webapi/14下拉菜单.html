@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      ul {
+        margin: 0;
+        padding: 0;
+      }
+      .nav {
+        width: 150px;
+        height: 30px;
+        background-color: #666;
+        display: flex;
+      }
+      li {
+        list-style: none;
+      }
+      .nav li {
+        flex: 1;
+        text-align: center;
+        line-height: 30px;
+      }
+      .nav li a {
+        display: block;
+      }
+      .item {
+        display: none;
+      }
+    </style>
+  </head>
+  <body>
+    <ul class="nav">
+      <li>
+        <a href="#">A</a>
+        <ul class="item">
+          <li>a</li>
+          <li>b</li>
+          <li>c</li>
+        </ul>
+      </li>
+      <li>
+        <a href="">B</a>
+        <ul class="item">
+          <li>d</li>
+          <li>e</li>
+          <li>f</li>
+        </ul>
+      </li>
+      <li>
+        <a href="">C</a>
+        <ul class="item">
+          <li>i</li>
+          <li>j</li>
+          <li>k</li>
+        </ul>
+      </li>
+    </ul>
+    <script>
+      var nav = document.querySelector(".nav").children;
+
+      var item = document.getElementsByClassName("item");
+      console.log(nav);
+      //   console.log(item);
+      //子元素选择
+      for (var i = 0; i < nav.length; i++) {
+        nav[i].onmouseover = function () {
+          this.children[1].style.display = "block";
+        };
+        nav[i].onmouseout = function () {
+          this.children[1].style.display = "none";
+        };
+      }
+    </script>
+  </body>
+</html>

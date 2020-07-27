@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script>
+      //思路 把输入的时间转换为毫秒 再转换为 时 分 秒
+      /* 
+      1.输入的时间减去现在的时间 即倒计时
+      2.用时间戳来做  输入毫秒 - 现在的毫秒
+      3.把毫秒数的差值 转换为 天 时 分 秒
+      4.转换公式
+      d = parseInt（time /60 /60/24)
+      h = parseInt (time /60 /60 %24)
+      m = parseInt (time /60 %60)
+      s = ParseInt (time %60 )
+      */
+      function countTime(time) {
+        var now = +new Date();
+        return (time - now) / 1000;
+      }
+      function transTime(time) {
+        timeTrans = Date.parse(time);
+        countTime = countTime(timeTrans);
+        d = parseInt(countTime / 60 / 60 / 24);
+        d < 10 ? "0" + d : d;
+        h = parseInt((countTime / 60 / 60) % 24);
+        h < 10 ? "0" + h : h;
+        m = parseInt((countTime / 60) % 60);
+        m < 10 ? "0" + m : m;
+        s = parseInt(countTime % 60);
+        s < 10 ? "0" + s : s;
+        console.log("剩余" + d + "天" + h + "小时" + m + "分钟" + s + "秒");
+      }
+      transTime("2020-07-14 09:30:00");
+    </script>
+  </head>
+  <body></body>
+</html>

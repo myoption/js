@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script>
+      //利用indexOf()  进行判断是否存在该元素
+      function removeRepitionElement(arr) {
+        if (Array.isArray(arr)) {
+          var newArr = [];
+          for (var i = 0; i < arr.length; i++) {
+            if (newArr.indexOf(arr[i]) == -1) {
+              newArr.push(arr[i]);
+            } else {
+              continue;
+            }
+          }
+          return newArr;
+        } else {
+          alert("请输入数组对象！");
+        }
+      }
+      console.log(removeRepitionElement([1, 1, 2, 3, 4, 4, 5, 6]));
+
+      //拓展 统计数组的重复元素及出现次数
+      function countRepitionElement(arr) {
+        if (arr instanceof Array) {
+          var count = [];
+          for (var i = 0; i < arr.length; i++) {
+            // 每次循环开始初始重复次数
+            var times = 0;
+            //用while判断是否存在重复
+            while (arr.indexOf(arr[i]) != arr.lastIndexOf(arr[i])) {
+              times++;
+              //删除重复的一个元素在判断是否重复
+              arr.splice(i, 1);
+            }
+            //如果有重复则写入新数组
+            if (times != 0) {
+              count.push([arr[i], times]);
+            }
+          }
+          return count;
+        } else {
+          alert("请输入数组对象！");
+        }
+      }
+      console.log(countRepitionElement([1, 1, 2, 2, 2, 3, 4, 4, 5]));
+    </script>
+  </head>
+  <body></body>
+</html>

@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      body {
+        background: url(../img/02.jpg) no-repeat;
+      }
+      img {
+        width: 200px;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- // 循环给一组元素注册事件 -->
+    <div class="box">
+      <img src="../img/00.jpg" alt="" />
+      <img src="../img/01.jpg" alt="" />
+      <img src="../img/02.jpg" alt="" />
+      <img src="../img/03.jpg" alt="" />
+    </div>
+    <script>
+      var imgs = document.querySelectorAll("img");
+      var body = document.body;
+      console.log(imgs);
+      for (var i = 0; i < imgs.length; i++) {
+        console.log(i);
+        imgs[i].onclick = function () {
+          console.log(i);
+          //获取图片路径给body
+          body.style.backgroundImage = "url(" + this.src + ")";
+          // body.style.backgroundImage = "url(../img/0" + i + ".jpg)";
+        };
+      }
+    </script>
+  </body>
+</html>

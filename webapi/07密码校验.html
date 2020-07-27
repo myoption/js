@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      .pwd {
+        width: 300px;
+        height: 80px;
+        background-color: #666;
+        margin: 0 auto;
+      }
+      .error {
+        color: red;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="pwd">
+      <input type="passwprd" />
+      <span></span>
+    </div>
+    <script>
+      //当获取密码框焦点 提示密码规则
+      var pwd = document.querySelector("input");
+      var infoMsg = document.querySelector("span");
+      passWord = pwd.value;
+      pwd.onfocus = function () {
+        if (passWord === "") {
+          infoMsg.innerText = "密码为6-12字符";
+        }
+      };
+      pwd.onblur = function () {
+        passWord = pwd.value;
+        console.log(passWord);
+        if (passWord === "") {
+          infoMsg.innerText = "请输入密码";
+          infoMsg.className = "error"; // 通过改变class 进行样式批量修改 多类名 保留原来 和新增样式
+        } else if (passWord.length < 6) {
+          infoMsg.innerText = "不能小于6位";
+        }
+      };
+    </script>
+  </body>
+</html>

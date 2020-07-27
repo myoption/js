@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style></style>
+  </head>
+  <body>
+    <div class="chooice">
+      <table>
+        <thead>
+          <tr>
+            <th><input type="checkbox" name="" id="chooseAll" /></th>
+            <th>商品</th>
+            <th>价钱</th>
+          </tr>
+        </thead>
+        <tbody id="tbody">
+          <tr>
+            <td><input type="checkbox" name="" id="" /></td>
+            <td>iphone8</td>
+            <td>6400</td>
+          </tr>
+          <tr>
+            <td><input type="checkbox" name="" id="" /></td>
+            <td>iphone9</td>
+            <td>6400</td>
+          </tr>
+          <tr>
+            <td><input type="checkbox" name="" id="" /></td>
+            <td>iphone8</td>
+            <td>6400</td>
+          </tr>
+          <tr>
+            <td><input type="checkbox" name="" id="" /></td>
+            <td>iphone8</td>
+            <td>6400</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <script>
+      //获取全选按钮的check属性 true 为全选 false为全取消
+      var chooseAll = document.getElementById("chooseAll");
+      var chooseOne = document
+        .getElementById("tbody")
+        .querySelectorAll("input");
+      console.log(chooseOne);
+      chooseAll.onclick = function () {
+        for (var i = 0; i < chooseOne.length; i++) {
+          chooseOne[i].checked = this.checked;
+        }
+      };
+      //检查tbody的checked属性 全部为true或false就改变全选按钮
+      for (var i = 0; i < chooseOne.length; i++) {
+        //给所有复选框绑定点击事件
+        chooseOne[i].onclick = function () {
+          //设定标志变量
+          var isChooseAll = true;
+          //每次点击都检查选中情况
+          for (var i = 0; i < chooseOne.length; i++) {
+            if (!chooseOne[i].checked) {
+              isChooseAll = false;
+              break;
+            }
+          }
+          chooseAll.checked = isChooseAll;
+        };
+      }
+    </script>
+  </body>
+</html>

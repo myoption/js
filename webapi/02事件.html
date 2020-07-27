@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      div {
+        height: 100px;
+        width: 100px;
+      }
+    </style>
+  </head>
+  <body>
+    <button>hello</button>
+    <button id="timr">显示当前时间</button>
+    <div id="time"></div>
+    <p id="getInner">
+      sadsf
+      <span>wfdsf </span>
+    </p>
+    //事件 组成 1. 事件源--事件被触发的对象 2. 事件类型 3.事件处理程序-函数
+    <script>
+      var btn = document.getElementsByTagName("button");
+      //事件类型 onclick
+      // 绑定事件  注册事件
+      btn[0].onclick = function () {
+        alert("ddd");
+      };
+
+      var getTime = document.getElementById("time");
+      getTime.onclick = function () {
+        getTime.innerText = Date();
+      };
+
+      // innerText  不识别html标签
+      var btn1 = document.getElementById("getInner");
+      //   btn1.onclick = function () {
+      //     btn1.innerText = "<strong>My name is :</strong>";
+      //   };
+      // innerHtml  可以识别html标签
+      btn1.onclick = function () {
+        btn1.innerHTML = "<strong>My name is :</strong>";
+      };
+
+      // 属性可读写 可以获取里面的内容
+      console.log(btn1.innerText); //去除空格和换行
+      console.log(btn1.innerHTML); //保留空格和换行
+    </script>
+  </body>
+</html>

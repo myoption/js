@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      a {
+        display: block;
+      }
+      img {
+        display: block;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="box">
+      <a href="#">x</a>
+      <img src="../img/TB.png" alt="" />
+    </div>
+    <script>
+      var closeTag = document.querySelector("a");
+      var hidden = document.querySelector(".box");
+      console.log(hidden);
+      closeTag.onclick = function () {
+        hidden.style.display = "none";
+      };
+    </script>
+  </body>
+</html>

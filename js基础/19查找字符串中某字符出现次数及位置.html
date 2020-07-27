@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script>
+      // 思路 用indexOf 进行查找 只要不等-1 就继续
+      //第二次查找 str.indexOf('o',index + 1 ) 索引加1开始 即可不重复查找
+      function findRepitionElement(str, target) {
+        var index = str.indexOf(target);
+        var count = {};
+        var position = [];
+        var times = 0;
+        while (index != -1) {
+          count[target + "次数"] = ++times;
+          position.push(index);
+          index = str.indexOf(target, index + 1);
+        }
+        count["position"] = position;
+        return count;
+      }
+      console.log(findRepitionElement("sfsfsdfseeethjyggd", "s"));
+    </script>
+  </head>
+  <body></body>
+</html>

@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script>
+      var num = [5, 4, 3, 2, 1];
+      var temp = 0;
+      for (var i = 0; i <= num.length - 1; i++) {
+        for (var j = 0; j <= num.length - i - 1; j++) {
+          if (num[j] > num[j + 1]) {
+            temp = num[j + 1];
+            num[j + 1] = num[j];
+            num[j] = temp;
+          }
+        }
+      }
+      console.log(num);
+    </script>
+  </head>
+  <body></body>
+</html>

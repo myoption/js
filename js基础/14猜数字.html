@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script>
+      // 得到2个数之间的随机数，并且包含这2个
+      function generateNum(min, max) {
+        return Math.floor(Math.random() * (max - min + 1) + min);
+      }
+      //判断输入的数是否正确
+      function isRight(guessNum, radomNum, times, guessTime) {
+        if (guessTime >= times) {
+          alert("您的次数已用完。");
+          return true;
+        }
+        if (guessNum > radomNum) {
+          alert("大了");
+          guessTime++;
+          return false;
+        }
+        if (guessNum < radomNum) {
+          alert("小了");
+          return false;
+          guessTime++;
+        }
+        if (guessNum == radomNum) {
+          alert("恭喜你，猜对了！");
+          return true;
+          guessTime++;
+        }
+        console.log(guessTime);
+      }
+      //直到输入正确为止
+      var times = 10;
+      var guessTime = 0;
+      while (true) {
+        var guessNum = Number(prompt("请输入您猜的数字："));
+        var radomNum = generateNum(1, 50);
+        if (isRight(guessNum, radomNum, times, guessTime)) {
+          break;
+        }
+      }
+    </script>
+  </head>
+  <body></body>
+</html>

@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      ul {
+        margin: 0;
+        padding: 0;
+        display: flex;
+        justify-content: center;
+        justify-content: space-evenly;
+      }
+      ul li {
+        list-style: none;
+        background-color: #666;
+      }
+      .nac {
+        width: 300px;
+        height: 300px;
+      }
+      .content {
+        width: 300px;
+        height: 240px;
+      }
+      #content li {
+        display: none;
+      }
+      #table_list .current {
+        background-color: red;
+      }
+      #content .current_content {
+        display: block;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="nac">
+      <ul id="table_list">
+        <li class="current">选项1</li>
+        <li>选项2</li>
+        <li>选项3</li>
+      </ul>
+      <div>
+        <ul id="content">
+          <li class="current_content">这是选项1</li>
+          <li>这是选项2</li>
+          <li>这是选项3</li>
+        </ul>
+      </div>
+    </div>
+    <script>
+      // var listT = document.getElementById("table_list").children;
+      var listB = document.querySelector("#content").querySelectorAll("li");
+      var table_list = document.querySelector("#table_list");
+      var lis = table_list.querySelectorAll("li");
+      console.log(lis);
+      // console.log(table_list);
+      // console.log(listT);
+      console.log(listB);
+      for (var i = 0; i < lis.length; i++) {
+        //给选项卡设置index
+        console.log(lis[i]);
+        lis[i].setAttribute("index", i);
+        lis[i].onclick = function () {
+          console.log(lis[i]);
+          //排他思想
+          for (var j = 0; j < lis.length; j++) {
+            // console.log(lis[j]);
+            // console.log(listB[j]);
+            lis[j].className = "";
+            listB[j].style.display = "none";
+          }
+          this.className = "current";
+          //这里不用this报错 lis[i].getAttribute
+          // console.log(this);
+          console.log(i);
+          var index = this.getAttribute("index");
+          listB[index].style.display = "block";
+        };
+      }
+    </script>
+  </body>
+</html>

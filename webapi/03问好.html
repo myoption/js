@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      div {
+        width: 150px;
+        height: 50px;
+        color: grey;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="hello"></div>
+    <script>
+      //获取事件源
+      var hello = document.getElementById("hello");
+      //注册绑定 事件
+      hello.onmouseover = function () {
+        var time = Date();
+        var timeHour = time.split(" ")[4];
+        var hour = Number(timeHour.split(":")[0]);
+        console.log(time.split(" "));
+        console.log(hour);
+
+        // getHours(); 另一方法获取时间
+        if (hour <= 11) {
+          hello.innerText = "上午好";
+        } else if (11 < hour <= 14) {
+          hello.innerText = "中午好";
+        } else if (14 < hour <= 18) {
+          hello.innerText = "晚上好";
+        }
+      };
+    </script>
+  </body>
+</html>
