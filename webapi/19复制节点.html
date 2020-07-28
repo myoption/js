@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <ul>
+      <li>1</li>
+      <li>2</li>
+      <li>3</li>
+    </ul>
+    <script>
+      var ul = document.querySelector("ul");
+      //深浅拷贝 浅拷贝只复制节点本身 深拷贝 节点及其子节点
+      var li1 = ul.children[0].cloneNode();
+      var li2 = ul.children[0].cloneNode(true);
+      ul.appendChild(li1);
+      ul.appendChild(li2);
+    </script>
+  </body>
+</html>

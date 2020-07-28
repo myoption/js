@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      table {
+        text-align: center;
+        border-collapse: collapse;
+      }
+      thead {
+        background-color: #666;
+        color: #fff;
+      }
+      th {
+        width: 80px;
+      }
+      th,
+      td {
+        border: 1px solid #666;
+      }
+    </style>
+  </head>
+  <body>
+    <table cellspacing="0">
+      <thead>
+        <tr>
+          <th>姓名</th>
+          <th>科目</th>
+          <th>成绩</th>
+          <th>操作</th>
+        </tr>
+      </thead>
+      <tbody></tbody>
+    </table>
+    <script>
+      //先准备数据 对象存储
+      var datas = [
+        {
+          name: "魏璎珞",
+          subject: "JavaScript",
+          score: 100,
+        },
+        {
+          name: "弘历",
+          subject: "JavaScript",
+          score: 98,
+        },
+        {
+          name: "绯红",
+          subject: "JavaScript",
+          score: 99,
+        },
+        {
+          name: "明玉",
+          subject: "JavaScript",
+          score: 80,
+        },
+        {
+          name: "尔康",
+          subject: "JavaScript",
+          score: 70,
+        },
+        {
+          name: "紫薇",
+          subject: "JavaScript",
+          score: 100,
+        },
+      ];
+      var tbody = document.querySelector("tbody");
+      for (var i = 0; i < datas.length; i++) {
+        // console.log(datas[i]);
+        //添加行
+        var tr = document.createElement("tr");
+        tbody.appendChild(tr);
+        for (var key in datas[i]) {
+          //添加列
+          var td = document.createElement("td");
+          td.innerText = datas[i][key];
+          tr.appendChild(td);
+        }
+        //每行添加删除按钮
+        var td = document.createElement("td");
+        td.innerHTML = "<a href='javascript:;'>删除</a>";
+        tr.appendChild(td);
+      }
+      //绑定删除事件 点击可删除 注意父子元素的层级
+      var del = document.querySelectorAll("a");
+      //   console.log(del);
+      for (var j = 0; j < del.length; j++) {
+        del[j].onclick = function () {
+          tbody.removeChild(this.parentNode.parentNode);
+        };
+      }
+    </script>
+  </body>
+</html>

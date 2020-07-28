@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style></style>
+  </head>
+  <body>
+    <textarea name="" id="" cols="30" rows="10"></textarea>
+    <button>发表</button><button>删除</button>
+    <ul></ul>
+    <script>
+      var textArea = document.querySelector("textarea");
+      var btn = document.querySelectorAll("button");
+      var ul = document.querySelector("ul");
+      btn[0].onclick = function () {
+        var content = textArea.value; // value 获取文本域的值
+        var li = document.createElement("li");
+        console.log(content);
+        if (content) {
+          li.innerHTML = content + "<a href='javascript:;'>删除</a>";
+          ul.appendChild(li);
+        } else {
+          alert("请输入留言！");
+        }
+        //删除某条留言 this.parnetNode 代表当前li
+        var del = document.querySelectorAll("a");
+        for (var i = 0; i < del.length; i++) {
+          del[i].onclick = function () {
+            ul.removeChild(this.parentNode);
+          };
+        }
+      };
+      btn[1].onclick = function () {
+        if (ul.children.length === 0) {
+          alert("当前无可删除内容！");
+        } else {
+          ul.removeChild(ul.children[0]);
+        }
+      };
+    </script>
+  </body>
+</html>
