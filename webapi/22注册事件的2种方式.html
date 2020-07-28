@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <!-- //注册事件唯一性 同一个元素 同一个事件 只能设置一个函数 -->
+    <button>传统注册事件</button>
+    <button>监听注册事件</button>
+    <!-- // addEventListener 同一个元素 同一个事件 注册多个监听器 按注册顺序执行 //
+    // addEventListener(type , listener ,[useCapture]) //type 事件类型字符 click
+    mouseover 不带on //listener 事件处理函数 // useCapture 可选参数 -->
+    <!-- ie9之前的版本 -->
+    <!-- attachEvent('onclick',function(){}) -->
+    <script>
+      var btn = document.querySelectorAll("button");
+      btn[1].addEventListener("click", function () {
+        alert("22");
+      });
+      btn[1].addEventListener("click", function () {
+        alert("33");
+      });
+      //注册事件的兼容性写法
+      function addEvent(element, eventName, fn) {
+        if (element.addEventListener) {
+          element.addEventListener(eventName, fn);
+        } else if (element.attachEvent) {
+          element.attachEvent("on" + eventName, fn);
+        } else {
+          // element.eventName = fn;
+          element["on" + eventName] = fn;
+        }
+      }
+    </script>
+  </body>
+</html>
