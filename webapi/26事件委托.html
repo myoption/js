@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <ul>
+      <li>1</li>
+      <li>2</li>
+      <li>3</li>
+      <li>4</li>
+      <li>5</li>
+      <li>6</li>
+      <li>7</li>
+      <li>8</li>
+    </ul>
+    <script>
+      // 事件委托原理
+      // 不是每个子节点单独设置事件监听器 而是在父节点设置 利用冒泡原理影响每个子节点
+      var ul = document.querySelector("ul");
+      ul.addEventListener("click", function (e) {
+        alert("tantan");
+        e.target.style.backgroundColor = "pink";
+      });
+    </script>
+  </body>
+</html>

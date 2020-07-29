@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      img {
+        position: absolute;
+        width: 30px;
+        top: 0;
+        left: 0;
+      }
+    </style>
+  </head>
+  <body>
+    <img src="../img/OIP.jpg" alt="" />
+    <script>
+      var img = document.querySelector("img");
+      document.addEventListener("mousemove", function (e) {
+        img.style.top = e.clientY + "px";
+        img.style.left = e.clientX + "px";
+      });
+    </script>
+  </body>
+</html>

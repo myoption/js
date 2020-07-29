@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <!--  contextmenu 鼠标右键菜单 e.preventDefault() 
+    禁用 selectstart 鼠标选中 
+    e.clientX(Y) 浏览器窗口可视区域坐标
+    e.pageX(Y)   文档页面坐标
+    e.screenX(Y) 电脑屏幕的坐标
+-->
+    <script>
+      document.addEventListener("click", function (e) {
+        console.log(e.clientX);
+        console.log(e.clientY);
+
+        console.log(e.screenX);
+        console.log(e.screenY);
+      });
+    </script>
+  </body>
+</html>

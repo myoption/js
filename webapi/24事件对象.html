@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div><p>123</p></div>
+    <script>
+      var div = document.querySelector("div");
+      /*    div.onclick = function (event) {
+        console.log(event);
+        console.log(window.event);
+        event = event || window.event;
+
+      }; */
+
+      // 事件对象 当形参来看
+      //有事件才会存在 系统自动创建
+      //事件对象是一系列相关数据的集合 跟事件相关 鼠标点击 包含鼠标坐标
+      div.addEventListener("click", function (e) {
+        console.log(e.target); //触发事件对象
+        console.log(this); //绑定事件对象
+        console.log(e.type);
+      });
+      // e.target 返回事件对象
+
+      // 阻止默认行为（事件） 让链接不跳转 按钮不提交
+      //e.preventDefault()
+      //ie678 e.returnValue;
+      // return false  后面代码不再执行 注意
+    </script>
+  </body>
+</html>

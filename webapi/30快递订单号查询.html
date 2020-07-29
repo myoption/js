@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      .search {
+        position: relative;
+        background-color: #666;
+      }
+      .bigger {
+        display: none;
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 120px;
+        height: 40px;
+        font-size: 20px;
+        background-color: white;
+      }
+      .bigger::after {
+        position: absolute;
+        content: "";
+        width: 0;
+        height: 0;
+        top: 40px;
+        left: 40px;
+        border-left: 5px solid transparent;
+        border-right: 5px solid transparent;
+        border-top: 10px solid white;
+      }
+      input {
+        margin-top: 50px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="search">
+      <div class="bigger"></div>
+      <input type="search" name="" id="" placeholder="请输入您的快递单号" />
+    </div>
+    <script>
+      var bigger = document.querySelector(".bigger");
+      var search = document.querySelector("input");
+      //keydown 会有bug 文字还没输入 就触发了事件
+      search.addEventListener("keyup", function () {
+        if (search.value) {
+          bigger.innerText = search.value;
+          bigger.style.display = "block";
+        } else {
+          bigger.style.display = "none";
+        }
+      });
+      search.addEventListener("blur", function () {
+        bigger.style.display = "none";
+      });
+      search.addEventListener("focus", function () {
+        if (this.value) {
+          bigger.style.display = "block";
+        }
+      });
+    </script>
+  </body>
+</html>

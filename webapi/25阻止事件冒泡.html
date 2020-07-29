@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div>
+      <div class="father">
+        <div class="son">son</div>
+      </div>
+    </div>
+    <script>
+      //阻止事件冒泡的2种方式
+      // 为什么阻止事件冒泡 冒泡有好处 有坏处
+      // e.stopPropagation();
+      var son = document.querySelector(".son");
+      son.addEventListener("click", function (e) {
+        alert("son");
+        e.stopPropagation();
+      });
+      var father = document.querySelector(".father");
+      father.addEventListener("click", function () {
+        alert("father");
+      });
+    </script>
+  </body>
+</html>
