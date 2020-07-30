@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <!-- 
+          同步任务都在主线程 形成一个执行栈
+          js异步是通过回调函数实现 任务队列--消息队列
+          一般包括3类
+          1.普通事件 click 等
+          2.资源加载 load error
+          3.定时器
+       -->
+    <script>
+      console.log(1);
+      setTimeout(function () {
+        console.log(2);
+      }, 1000);
+      console.log(3);
+    </script>
+  </body>
+</html>

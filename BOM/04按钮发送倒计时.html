@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <form action="">
+      <input type="text" />
+      <button>发送</button>
+    </form>
+    <script>
+      var input = document.querySelector("input");
+      var btn = document.querySelector("button");
+      btn.addEventListener("click", function () {
+        if (input.value) {
+          this.disabled = "disabled";
+          input.value = "";
+          // 定义一个变量 在定时器自减
+          var i = 10; // 每次点击会重置变量的值
+          var timer = setInterval(function () {
+            //当变量为0 即停止 恢复按钮状态
+            if (i === 0) {
+              btn.disabled = "";
+              btn.innerHTML = "发送";
+              clearInterval(timer);
+            } else {
+              i--;
+              btn.innerHTML = i + "s";
+            }
+          }, 1000);
+        } else {
+          alert("请输入手机号码");
+        }
+      });
+    </script>
+  </body>
+</html>

@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      div {
+        width: 100px;
+        height: 100px;
+        background-color: #666;
+      }
+    </style>
+  </head>
+  <body>
+    <div></div>
+    <script>
+      //常用于完成响应式布局 window.innerwidth 当前屏幕宽度
+      var div = document.querySelector("div");
+      window.addEventListener("resize", function () {
+        console.log("窗口大小改变");
+        if (window.innerWidth <= 500) {
+          div.style.display = "none";
+        }
+        if (window.innerWidth >= 600) {
+          div.style.display = "block";
+        }
+      });
+    </script>
+  </body>
+</html>

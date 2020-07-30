@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      .outer {
+        width: 250px;
+        height: 350px;
+        background-color: brown;
+      }
+      .outer span {
+        float: left;
+        margin-top: 117px;
+        /* padding-left: 5px; */
+      }
+      .outer div {
+        float: left;
+        margin-top: 100px;
+        background-color: azure;
+        width: 50px;
+        height: 50px;
+        margin-left: 10px;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- setTimeout()1次 setInterval() 重复调用
+    多个定时器 加标识符
+    clearTimeout(timeID) 清除定时器-->
+    <div class="outer">
+      <button class="begin">开始倒计时</button>
+      <button class="stop">停止倒计时</button>
+      <div class="hour"></div>
+      <span>时</span>
+      <div class="minute"></div>
+      <span>分</span>
+      <div class="second"></div>
+      <span>秒</span>
+    </div>
+    <script>
+      var hour = document.querySelector(".hour");
+      var minute = document.querySelector(".minute");
+      var second = document.querySelector(".second");
+      var begin = document.querySelector(".begin");
+      var stop = document.querySelector(".stop");
+      //1.计算当前时间
+      function countTime(time) {
+        // var now = +new Date();
+        var now = Date.now();
+        return (time - now) / 1000;
+      }
+      function transTime(time) {
+        var times = Date.parse(time);
+        var seconds = countTime(times);
+        var h = parseInt((seconds / 60 / 60) % 24);
+        h = h < 10 ? "0" + h : h;
+        var m = parseInt((seconds / 60) % 60);
+        m = m < 10 ? "0" + m : m;
+        var s = parseInt(seconds % 60);
+        s = s < 10 ? "0" + s : s;
+        return h + " " + m + " " + s;
+      }
+      function countDown() {
+        var time = transTime("2020-07-30 14:00:00");
+        var timeList = time.split(" ");
+        hour.innerHTML = timeList[0];
+        minute.innerHTML = timeList[1];
+        second.innerHTML = timeList[2];
+      }
+      var cd = null; //利用全局变量
+      begin.addEventListener("click", function () {
+        // 刷新时页面有空白  因为1秒后才执行 所以先调用一次函数
+        countDown();
+        //2.写入当前时间
+        cd = setInterval(countDown, 1000);
+      });
+      stop.addEventListener("click", function () {
+        clearInterval(cd);
+      });
+    </script>
+  </body>
+</html>
