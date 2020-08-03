@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <span></span>
+    <script>
+      var content = document.querySelector("span");
+      var time = 5;
+      var countDown = setInterval(function () {
+        if (time === 0) {
+          window.location.href = "https://cn.bing.com/";
+        } else {
+          content.innerText = "还剩" + time + "秒";
+          time--;
+        }
+      }, 1000);
+    </script>
+  </body>
+</html>

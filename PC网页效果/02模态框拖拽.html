@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      .outer {
+        /* display: none; */
+        position: fixed;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        width: 450px;
+        height: 200px;
+        background-color: tomato;
+      }
+      .tittle {
+        text-align: center;
+        position: 10px 0;
+        cursor: move;
+        background-color: #666;
+        height: 30px;
+        line-height: 30px;
+      }
+      .username,
+      .pwd {
+        height: 60px;
+        margin-left: 100px;
+      }
+      .login {
+        text-align: center;
+      }
+      .login button {
+        display: block;
+        width: 50px;
+        height: 30px;
+        margin-left: 200px;
+      }
+      .close {
+        position: absolute;
+        display: block;
+        left: 410px;
+        top: -10px;
+        width: 45px;
+        height: 45px;
+        border-radius: 22.5px;
+      }
+      .mask {
+        display: none;
+        position: fixed;
+        top: 0;
+        left: 0;
+        background-color: #777;
+        width: 100%;
+        height: 100%;
+        z-index: -1;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="popup"><a href="#">登录</a></div>
+    <div class="outer">
+      <div class="tittle">登录</div>
+      <div class="username">
+        用户名：<input type="text" /><button class="close">关闭</button>
+      </div>
+      <div class="pwd">
+        密&nbsp;&nbsp;&nbsp;码：<input type="password" name="" id="" />
+      </div>
+      <div class="login"><button class="clickhere">登录</button></div>
+    </div>
+    <div class="mask"></div>
+    <script>
+      //1.完成点击显示与隐藏
+      var closeBtn = document.querySelector(".close");
+      var outer = document.querySelector(".outer");
+      var popup = document.querySelector(".popup");
+      var mask = document.querySelector(".mask");
+      popup.addEventListener("click", function () {
+        outer.style.display = "block";
+        mask.style.display = "block";
+      });
+      closeBtn.addEventListener("click", function () {
+        outer.style.display = "none";
+        mask.style.display = "none";
+      });
+      //2.完成拖拽 三步 mousedown mousemove mouseup
+      // 赋值给盒子的 top left
+      var tittle = document.querySelector(".tittle");
+
+      tittle.addEventListener("mousedown", function (e) {
+        originX = e.pageX - outer.offsetLeft;
+        originY = e.pageY - outer.offsetTop;
+        //按下之后才移动 页面中移动鼠标
+        tittle.addEventListener("mousemove", move);
+      });
+      function move(e) {
+        outer.style.left = e.pageX - originX + "px";
+        outer.style.top = e.pageY - originY + "px";
+      }
+      //鼠标弹起 移除鼠标移动事件
+      tittle.addEventListener("mouseup", function () {
+        tittle.removeEventListener("mousemove", move);
+      });
+    </script>
+  </body>
+</html>

@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      .small {
+        position: relative;
+        width: 400px;
+        height: 400px;
+        border: 2px solid #888;
+      }
+      .small img {
+        width: 400px;
+      }
+      .mask {
+        display: none;
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 300px;
+        height: 300px;
+        background-color: yellow;
+        opacity: 0.5;
+        cursor: move;
+      }
+      .big {
+        display: none;
+        position: absolute;
+        top: 0;
+        left: 418px;
+        width: 700px;
+        height: 700px;
+        /* background: url(../img/jdbig.jpg) no-repeat; */
+        border: 2px solid #888;
+        overflow: hidden;
+      }
+      .big img {
+        position: absolute;
+        top: 0;
+        left: 0;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="small">
+      <img src="../img/jd.jpg" alt="" />
+      <div class="mask"></div>
+    </div>
+    <div class="big">
+      <img src="../img/jdbig.jpg" alt="" />
+    </div>
+    <script>
+      var small = document.querySelector(".small");
+      var mask = document.querySelector(".mask");
+      var big = document.querySelector(".big");
+      console.log(big);
+      var bigIMG = document.querySelector(".big img");
+      console.log(bigIMG);
+      //从不同位置放到图片上 则mask出现在不同位置
+      small.addEventListener("mouseover", function (e) {
+        console.log(e.clientX);
+        if (e.clientX < 200 && e.clientY > 200) {
+          mask.style.top = 100 + "px";
+        } else if (e.clientX > 200 && e.clientY < 200) {
+          mask.style.left = 100 + "px";
+        } else if (e.clientX > 200 && e.clientY > 200) {
+          mask.style.top = 100 + "px";
+          mask.style.left = 100 + "px";
+        }
+        mask.style.display = "block";
+        big.style.display = "block";
+      });
+      small.addEventListener("mousemove", function (e) {
+        var x = e.pageX - this.offsetLeft;
+        var y = e.pageY - this.offsetTop;
+        var maskX = x - mask.offsetWidth / 2;
+        var maskY = y - mask.offsetHeight / 2;
+        //mask  移动不超出盒子  超出之后 x y 不变化
+        //mask  small 盒子的 宽 高 差 为 left top 的最大值 最小值为0
+        if (maskX <= 0) {
+          maskX = 0;
+        }
+        if (maskX >= small.offsetWidth - mask.offsetWidth) {
+          maskX = small.offsetWidth - mask.offsetWidth;
+        }
+        if (maskY <= 0) {
+          maskY = 0;
+        }
+        if (maskY >= small.offsetHeight - mask.offsetHeight) {
+          maskY = small.offsetHeight - mask.offsetHeight;
+        }
+        mask.style.let = maskX + "px";
+        mask.style.top = maskY + "px";
+        //大盒子移动同样的距离 大图盒子与图片宽高差为100 取巧
+        // 实际计算 大图移动距离= mask移动距离 * 大图最大距离 /  mask最大距离
+        // big.style.backgroundPositionY = -maskY + "px";
+        // big.style.backgroundPositionX = -maskX + "px";
+        bigIMG.style.left =
+          (-maskX * (bigIMG.offsetWidth - big.offsetWidth)) /
+            (small.offsetHeight - mask.offsetHeight) +
+          "px";
+        bigIMG.style.top =
+          (-maskY * (bigIMG.offsetHeight - big.offsetHeight)) /
+            (small.offsetHeight - mask.offsetHeight) +
+          "px";
+      });
+      small.addEventListener("mouseout", function () {
+        mask.style.display = "none";
+        big.style.display = "none";
+        mask.style.top = 0;
+        mask.style.left = 0;
+      });
+    </script>
+  </body>
+</html>

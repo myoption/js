@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      div {
+        width: 200px;
+        height: 200px;
+        background-color: brown;
+        margin: 100px 0 0 100px;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- 
+        offset 动态获取元素位置
+        1.获得元素距离带有定位父元素的位置
+        2.获得元素自身的大小（宽度 高度） 包含padding border
+        注意：返回的数值都不带单位
+        offsetTop 
+        offsetLeft
+        offsetWidth
+        offsetHeight
+
+        返回带定位的父元素
+        offsetParent
+     -->
+    <div></div>
+    <script>
+      // 利用鼠标到窗口距离减去 盒子的距离
+      var div = document.querySelector("div");
+      div.addEventListener("mousemove", function (e) {
+        var x = e.clientX - div.offsetLeft;
+        var y = e.clientY - div.offsetTop;
+        console.log(x, y);
+      });
+    </script>
+  </body>
+</html>
