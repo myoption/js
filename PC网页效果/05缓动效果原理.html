@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      div {
+        position: absolute;
+        left: 0;
+        margin-top: 200px;
+        width: 150px;
+        height: 150px;
+        background-color: tomato;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- 
+      1.每次移动的距离逐渐变小
+      2.核心算法 （目标值 - 当前值） / 10 作为每次移动的步长
+      3.停止条件： 当前值 =  目标值
+     -->
+    <button class="btn5">开始移动500</button>
+    <button class="btn8">开始移动800</button>
+    <div>大明湖畔的夏雨荷</div>
+    <script>
+      var btn5 = document.querySelector(".btn5");
+      var btn8 = document.querySelector(".btn8");
+      var div = document.querySelector("div");
+      function animate(obj, target, callback) {
+        //先清除定时器 只保留一个
+        clearInterval(obj.timer);
+        obj.timer = setInterval(function () {
+          if (obj.offsetLeft === target) {
+            clearInterval(obj.timer);
+            //回调函数写到定时器结束位置
+            if (callback) {
+              callback();
+            }
+          } else {
+            //为正向上取整 为负向下取整
+            var distance = (target - obj.offsetLeft) / 10;
+            if (distance >= 0) {
+              distance = Math.ceil(distance);
+            } else {
+              distance = Math.floor(distance);
+            }
+            obj.style.left = obj.offsetLeft + distance + "px";
+          }
+        }, 50);
+      }
+      btn5.addEventListener("click", function () {
+        animate(div, 500);
+      });
+      btn8.addEventListener("click", function () {
+        animate(div, 800, function () {
+          // alert("你好吗");
+          div.style.backgroundColor = "green";
+        });
+      });
+      //添加回调函数  函数作为参数传入 在另一函数执行完 再调用
+    </script>
+  </body>
+</html>

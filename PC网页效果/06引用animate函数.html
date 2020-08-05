@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      function f2() {
+        var n = 22;
+        var aAdd = function () {
+          n++;
+        };
+        return function () {
+          return {
+            n: n,
+            nAdd: aAdd,
+          };
+        };
+      }
+      var result2 = f2();
+      console.log(result2());
+      //   result2().nAdd();
+      //   console.log(result2());
+    </script>
+  </body>
+</html>

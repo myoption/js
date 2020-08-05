@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+      }
+      div {
+        width: 100%;
+        height: 580px;
+      }
+      .asidebar {
+        position: absolute;
+        top: 300px;
+        right: 50px;
+        width: 30px;
+        height: 250px;
+        text-align: center;
+        white-space: pre-line;
+      }
+      .asidebarFixed {
+        position: fixed;
+        /* top: 300px; */
+        right: 50px;
+        width: 50px;
+        text-align: center;
+      }
+      .asidebar a {
+        display: inline-block;
+        text-decoration: none;
+        width: 50px;
+        height: 50px;
+        border-bottom: 1px solid #777;
+        color: black;
+        /* display: flex;
+        justify-content: center;
+        align-items: center; */
+      }
+      a:nth-child(1) {
+        background-color: brown;
+        color: #fff;
+      }
+      a:nth-child(3) {
+        display: none;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- 
+          思路：
+          先是相对定位，当scroll的值到达临界  转换为固定定位 同时 显示top
+          scrollWidth 内容的宽度  3fg127【
+          clientWidth 盒子的宽度 包含padding
+          offsetWidth 包括padding  边框
+       -->
+    <div class="asidebar">
+      <a href="#">淘宝 特色</a>
+      <a href="#">猜你 喜欢</a>
+      <a href="javascript:;" class="top">TOP</a>
+      <a href="#">反馈 </a>
+      <a href="#">举报 卖家</a>
+    </div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <script>
+      var as = document.querySelectorAll(".asidebar a");
+      //   console.log(as);
+      var asideBar = document.querySelector(".asidebar");
+      var html = document.body;
+      //   console.log(html);
+      document.addEventListener("scroll", function () {
+        //页面在滚动 需要用window.pageYOffset 类型元素的scrollTop
+        if (window.pageYOffset >= 400) {
+          console.log(window.pageYOffset);
+          asideBar.className = "asidebar asidebarFixed";
+          console.log(as[2]);
+          as[2].style.display = "block";
+        } else {
+          asideBar.className = "asidebar";
+          as[2].style.display = "none";
+        }
+      });
+      //点击TOP 返回顶部 window.scroll(x,y) 不带单位
+      as[2].addEventListener("click", function () {
+        // window.scroll(0, 0);
+        //窗口滚动 对象传window
+        animate(window, 0);
+      });
+      //对animate函数进行改造 改为垂直移动
+      function animate(obj, target, callback) {
+        //先清除定时器 只保留一个
+        clearInterval(obj.timer);
+        obj.timer = setInterval(function () {
+          if (obj.pageYOffset === target) {
+            clearInterval(obj.timer);
+            //回调函数写到定时器结束位置
+            if (callback) {
+              callback();
+            }
+          } else {
+            //为正向上取整 为负向下取整
+            var distance = (target - obj.pageYOffset) / 10;
+            if (distance >= 0) {
+              distance = Math.ceil(distance);
+            } else {
+              distance = Math.floor(distance);
+            }
+            // obj.style.left = obj.offsetLeft + distance + "px";
+            obj.scroll(0, obj.pageYOffset + distance);
+          }
+        }, 10);
+      }
+    </script>
+  </body>
+</html>
