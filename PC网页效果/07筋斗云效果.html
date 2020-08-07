@@ -54,24 +54,31 @@
       for (var i = 0; i < li.length; i++) {
         //添加索引
         li[i].setAttribute("data-index", i);
-        //给li添加点击事件
-        li[i].addEventListener("click", function () {
-          var index = this.getAttribute("data-index");
-          cloud.style.left = index * step + "px";
-        });
         //当鼠标经过时调用动画
         li[i].addEventListener("mouseover", function () {
+          //方法1
           var index = this.getAttribute("data-index");
           console.log(index);
           animate(cloud, index * step);
+          //方法2
+          // animate(cloud, this.offsetLeft);
         });
         li[i].addEventListener("mouseout", function () {
           //利用sapn 左侧距离求得index差值 获得移动距离
-          var cloudWidth = cloud.offsetLeft;
+          /*        var cloudWidth = cloud.offsetLeft;
           console.log(cloudWidth);
           var index = this.getAttribute("data-index");
           indexOrigin = cloudWidth / step;
-          animate(cloud, (index - indexOrigin) * step);
+          animate(cloud, (index - indexOrigin) * step); */
+          //方法2 鼠标离开回到起始位置
+          animate(cloud, indexOrigin);
+        });
+        //给li添加点击事件 修改cloud起始位置
+        li[i].addEventListener("click", function () {
+          var index = this.getAttribute("data-index");
+          //鼠标点击改变cloud起始位置
+          indexOrigin = this.offsetLeft;
+          // cloud.style.left = index * step + "px";
         });
       }
     </script>

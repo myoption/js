@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      div {
+        width: 200px;
+        height: 200px;
+        background-color: tomato;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- 
+          touchstart 触摸时触发
+          touchmove 在DOM上滑动时触发
+          touchend  在DOM上移开时触发
+       -->
+    <div></div>
+    <script>
+      var div = document.querySelector("div");
+      div.addEventListener("touchstart", function () {
+        console.log("mo ni ");
+      });
+      div.addEventListener("touchmove", function () {
+        console.log("乱摸 ");
+      });
+      div.addEventListener("touchend", function () {
+        console.log("摸完了 ");
+      });
+    </script>
+  </body>
+</html>
