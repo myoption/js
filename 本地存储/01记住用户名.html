@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <!-- 
+        使用localStorage进行读取 通过是否勾选 是否为空进行判断显示
+     -->
+    <input type="text" id="uname" /><input
+      type="checkbox"
+      id="remember"
+    />记住用户名
+    <script>
+      var uanme = document.querySelector("#uname");
+      var remember = document.querySelector("#remember");
+      remember.addEventListener("change", function () {
+        var value = uanme.value;
+        if (remember.checked) {
+          if (value) {
+            localStorage.setItem("userName", value);
+          }
+        } else {
+          localStorage.removeItem("userName");
+          remember.checked = false;
+        }
+      });
+      uanme.addEventListener("blur", function () {
+        var value = uanme.value;
+        if (remember.checked) {
+          if (value) {
+            localStorage.setItem("userName", value);
+          }
+        } else {
+          localStorage.removeItem("userName");
+          remember.checked = false;
+        }
+      });
+      var value = localStorage.getItem("userName");
+      console.log(value);
+      if (value) {
+        remember.checked = true;
+        uanme.value = value;
+      }
+    </script>
+  </body>
+</html>

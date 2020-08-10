@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="../css/zy.media.css" />
+    <script src="../js/zy.media.js"></script>
+  </head>
+  <body>
+    <!-- <video width="320" height="240" controls>
+      <source src="./../../lu.mp4" />
+    </video> -->
+    <div class="zy_media">
+      <video
+        poster="test.jpg"
+        data-config='{"mediaTitle": "《疯狂动物城》--腾讯视频"}'
+      >
+        <source src="test.mp4" type="video/mp4" />
+        您的浏览器不支持HTML5视频
+      </video>
+    </div>
+    <script src="../src/zy.media.js"></script>
+    <script>
+      zymedia("video");
+    </script>
+  </body>
+</html>

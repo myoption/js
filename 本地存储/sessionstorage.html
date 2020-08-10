@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <!-- 约5M 只能存储字符串 json
+    生命周期为关闭浏览器-->
+    <input type="text" />
+    <button class="set">存储数据</button>
+    <button class="read">读取数据</button>
+    <button class="del">删除数据</button>
+    <button class="clear">清空数据</button>
+    <script>
+      var input = document.querySelector("input");
+      var set = document.querySelector(".set");
+      var read = document.querySelector(".read");
+      var del = document.querySelector(".del");
+      var clear = document.querySelector(".clear");
+      set.addEventListener("click", function () {
+        var value = input.value;
+        sessionStorage.setItem("uname", value);
+      });
+      read.addEventListener("click", function () {
+        var value = sessionStorage.getItem("uname");
+        console.log(value);
+      });
+    </script>
+  </body>
+</html>

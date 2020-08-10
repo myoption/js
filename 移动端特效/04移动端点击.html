@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      div {
+        width: 200px;
+        height: 200px;
+        background-color: tomato;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- 
+          移动端点击延迟300毫秒  因为双击恢复屏幕缩放
+          解决方案1  禁止缩放 user-scalable=no
+          解决方案2 封装点击函数进行判断
+       -->
+    <div></div>
+    <script>
+      var div = document.querySelector("div");
+      function tap(obj, callback) {
+        var isMove = false;
+        var startTime = 0;
+        var startX = 0;
+        var startY = 0;
+        obj.addEventListener("touchstart", function (e) {
+          //获取初始位置和时间
+          startTime = Date.now();
+          startX = e.targetTouches[0].pageX;
+          startY = e.targetTouches[0].pageY;
+        });
+        obj.addEventListener("touchmove", function (e) {
+          //判断是否移动
+          if (
+            e.targetTouches[0].pageX !== startX ||
+            e.targetTouches[0].pageY !== startY
+          ) {
+            isMove = true;
+          }
+        });
+        obj.addEventListener("touchend", function () {
+          //如果是单击 则执行回调函数
+          var time = Date.now() - startTime;
+          if (!isMove && time < 150) {
+            callback && callback();
+          }
+        });
+      }
+      div.addEventListener(
+        "touchstart",
+        tap(div, function () {
+          alert("我是单击");
+        })
+      );
+    </script>
+  </body>
+</html>
