@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <ul class="nav">
+      <li>1</li>
+      <li>2</li>
+      <li>3</li>
+      <li>4</li>
+    </ul>
+    <script>
+      //1.动态添加属性的方式
+      var lis = document.querySelectorAll(".nav li");
+      //2.利用闭包 获取索引号
+      for (let i = 0; i < lis.length; i++) {
+        //利用for循环创建4个立即执行函数
+        //立即执行函数里面的 函数都可以使用立即函数的变量
+        (function (i) {
+          lis[i].onclick = function () {
+            console.log(i);
+          };
+        })(i);
+      }
+      //闭包应用-3秒钟之后，打印所有li元素内容
+      setTimeout(function () {
+        for (let i = 0; i < lis.length; i++) {
+          let content = lis[i].innerHTML;
+          console.log(content);
+        }
+      }, 3000);
+      function payMoney(mile, isBlockUp) {}
+      (function () {
+        let startMile = 3;
+        let totalFee = 0;
+        if (isBlockUp) {
+          return {};
+        }
+      })();
+    </script>
+  </body>
+</html>

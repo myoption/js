@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      //在函数内部调用自己 防止栈溢出 加上退出条件
+      /*  var num = 1;
+      function add() {
+        console.log("第" + num + "次打印");
+        if (num === 6) {
+          return;
+        }
+        num++;
+        add();
+      }
+      add(); */
+      //求1-n的阶乘
+      function getNum(n) {
+        if (n === 1) {
+          return 1;
+        }
+        return n * getNum(n - 1);
+      }
+      console.log(getNum(12));
+      //斐波那契数列
+      function getRabbit(n) {
+        if (n === 1 || n === 2) {
+          return 1;
+        }
+        return getRabbit(n - 1) + getRabbit(n - 2);
+      }
+      console.log(getRabbit(6));
+      //利用递归遍历
+      var data = [
+        {
+          name: "所有物品",
+          children: [
+            {
+              name: "水果",
+              children: [
+                {
+                  name: "苹果",
+                  children: [{ name: "青苹果" }, { name: "红苹果" }],
+                },
+              ],
+            },
+            {
+              name: "主食",
+              children: [
+                {
+                  name: "米饭",
+                  children: [{ name: "北方米饭" }, { name: "南方米饭" }],
+                },
+              ],
+            },
+            {
+              name: "生活用品",
+              children: [
+                {
+                  name: "电脑类",
+                  children: [{ name: "联想电脑" }, { name: "苹果电脑" }],
+                },
+                {
+                  name: "工具类",
+                  children: [{ name: "锄头" }, { name: "锤子" }],
+                },
+                {
+                  name: "生活用品",
+                  children: [{ name: "洗发水" }, { name: "沐浴露" }],
+                },
+              ],
+            },
+          ],
+        },
+      ];
+    </script>
+  </body>
+</html>

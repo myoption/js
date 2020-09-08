@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      //1.数组
+      // forEach() map() filter() some() every()
+      //return 无法终止forEach循环
+      var arr = [1, 2, 3, 4];
+      arr.forEach(function (value, index, array) {
+        // console.log(value);
+        // console.log(index);
+      });
+      //filter  创建一个新的数组 筛选数组
+      var newArr = arr.filter(function (value, index) {
+        return value > 2;
+      });
+      //   console.log(newArr);
+      //some 查找数组的元素是否满足条件 返回布尔值 找到第一个就终止循环
+      var ok = arr.some(function (value, index) {
+        return value > 5;
+      });
+      //every 当数组中每个元素都满足条件才返回true 否则false
+      //map  返回一个新数组  其中的元素是每个都执行回调函数之后的值
+      var countArr = arr.map((x) => x * x);
+      console.log(countArr);
+      //   console.log(ok);
+      //2.字符串
+      var str = " sfsf ";
+      //trim 去除字符串2端空白 返回新的字符串
+      console.log(str.trim());
+      //3.对象
+      //Object.keys(obj) 获取对象自身的所有属性 key名 返回一个数组
+      var obj = {
+        id: 1,
+        name: "ss",
+      };
+      // console.log(Object.keys(obj));
+      // object.defineProperty( ) 定义新属性 或修改原属性 注意参数的格式
+      // Object.defineProperty(obj, "price", { value: 1999 });
+      // console.log(obj);
+      Object.defineProperty(obj, "id", {
+        writable: false,
+      });
+      Object.defineProperty(obj, "price", { value: 2, enumerable: true });
+      console.log(obj);
+      console.log(Object.keys(obj));
+    </script>
+  </body>
+</html>

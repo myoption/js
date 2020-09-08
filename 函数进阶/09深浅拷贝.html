@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      //浅拷贝只拷贝一层 更深层次的对象级别的只拷贝引用
+      //深拷贝拷贝多层，每一级的数据都会拷贝 新开辟内存空间
+      var obj = {
+        id: 1,
+        name: "ldh",
+        msg: {
+          age: 18,
+        },
+      };
+      var o = {};
+      //   Object.assign(o, obj); //浅拷贝 或者for循环
+      function deepCopy(newobj, oldobj) {
+        //判断属性值属于哪种数据类型 应该使用递归 因为数据层级未知
+        for (let k in oldobj) {
+          let item = oldobj[k];
+          //先判断数组  因为数组 也属于Object
+          if (item instanceof Array) {
+            //添加空数组 构造数据层级
+            console.log("here");
+            newobj[k] = []; // 关键
+            deepCopy(newobj[k], item);
+          } else if (item instanceof Object) {
+            console.log(item);
+            newobj[k] = {};
+            deepCopy(newobj[k], item);
+          } else {
+            newobj[k] = item;
+          }
+        }
+      }
+      deepCopy(o, obj);
+      console.log(o);
+      o.msg.age = 20;
+      console.log(obj.msg.age);
+    </script>
+  </body>
+</html>

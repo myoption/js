@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <button>点击</button>
+    <script>
+      //1.call() 方法 调用函数 可以作用实现继承 改变this指向
+      var o = {
+        name: "andy",
+      };
+      function fn(a, b) {
+        // console.log(this);
+        console.log(this.name);
+        return a + b;
+      }
+      fn(1, 2);
+      fn.call(o, 1, 2);
+      //2.apply() 调用函数  改变this指向 第一个参数为对象 第二个参数为数组
+      //绑定其他对象的方法
+      fn.apply(o, [1, 2]);
+      var arr = [1, 55, 66, 3, 99, 4];
+      var max = Math.max.apply(Math, arr);
+      console.log(max);
+      //3.bind() 返回一个新的函数 不调用函数 改变this指向 又不需要立即调用
+      //一个按钮  点击之后禁用 3秒之后 开启这个按钮
+      var btn = document.querySelector("button");
+      btn.onclick = function () {
+        btn.disabled = true;
+        setTimeout(
+          function () {
+            this.disabled = false; //定时器里面的this指向 window
+          }.bind(this), // 指向点击的按钮对象 改变this指向
+          3000
+        );
+      };
+    </script>
+  </body>
+</html>

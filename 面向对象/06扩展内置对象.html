@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      function Father(uname, age) {
+        this.uname = uname;
+        this.age = age;
+      }
+      function Son() {
+        Father.call(this, "hello", 18);
+      }
+      var son = new Son();
+      console.log(son.uname);
+      //借用构造函数 继承父类方法
+      Son.prototype = new Father();
+      //指回原来的构造函数
+      Son.prototype.constructor = Son;
+    </script>
+  </body>
+</html>

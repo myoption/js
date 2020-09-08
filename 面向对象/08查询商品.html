@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      .search,
+      table {
+        margin: 100px auto;
+        width: 50%;
+      }
+      table,
+      tr,
+      th,
+      td {
+        text-align: center;
+        border: 1px solid #666;
+        border-collapse: collapse;
+      }
+      .search .min,
+      .search .max {
+        width: 60px;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- 思路
+            把完整的商品信息存入Storage 按需读取 、展示（不行 不好关联属性）
+            根据输入的价格查询
+            最低价 最高价 查询
+            根据商品名称查询
+    -->
+    <div class="search">
+      按照价格查询：<input type="text" class="min" />-<input
+        type="text"
+        class="max"
+      />按照商品名称查询：<input type="text" class="goodsName" />
+      <button class="check">查询</button>
+    </div>
+    <table>
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>产品名称</th>
+          <th>价格</th>
+        </tr>
+      </thead>
+      <tbody>
+        <!-- 动态生成展示表格 行 -->
+      </tbody>
+    </table>
+    <script src="../js/qureyGoodsInfo.js"></script>
+  </body>
+</html>

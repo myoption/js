@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      //闭包  有权访问另一个函数作用域的变量的函数
+      /* 延伸了变量的作用域
+      function fn() {
+        let num = 10;
+        function f1() {
+          console.log(num);
+        }
+        f1();
+      }
+      fn(); */
+      // 在fn外的作用域访问其内部变量num
+      function fn() {
+        let num = 10;
+        function f1() {
+          console.log(num);
+        }
+        return f1;
+      }
+      var f2 = fn();
+      f2();
+    </script>
+  </body>
+</html>
