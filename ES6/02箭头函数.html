@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      //this  指向定义时的this
+      /* const fn = (a, b) => {
+        return a + b;
+      };
+      console.log(fn(1, 2));*/
+      //   const obj = { name: "zhang san " };
+      //   function fn() {
+      //     console.log(this);
+      //     return () => {
+      //       console.log(this);
+      //     };
+      //   }
+      //   const resFn = fn.call(obj);
+      //   resFn();
+      var age = 100;
+      var obj = { age: 20, say: () => alert(this.age) };
+      obj.say();
+      //对象不能产生作用域
+    </script>
+  </body>
+</html>

@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <script>
+      // ...  拆分为,分割的参数序列
+      //   let arr = [1, 2, 3];
+      //   console.log(...arr);
+      //合并数组
+      //   let arr1 = [1, 2, 3];
+      //   let arr2 = [4, 5, 6];
+      //   let arr3 = [...arr1, ...arr2]; //arr3.push(...arr1)
+      //   console.log(arr3);
+      //将伪数组转换为真正的数组 或者使用 Array.from(arrayLike)
+      //   let divs = document.querySelectorAll("div");
+      //   console.log(divs);
+      //   let divArr = [...divs];
+      //   console.log(divArr);
+      let arrLike = {
+        0: "1",
+        1: "2",
+        length: 2, //必选加length属性
+      };
+      let arr = Array.from(arrLike, (item) => item * 3);
+      console.log(arr);
+      //find 用于找出符合条件的第一个数组成员 没有则返回undefined
+      let ary = [
+        { id: 1, name: "z s" },
+        { id: 2, name: " l s" },
+      ];
+      let target = ary.find((item, index) => item.id === 2);
+      console.log(target);
+      //findIndex() index -1
+      //includes() true false
+    </script>
+  </body>
+</html>

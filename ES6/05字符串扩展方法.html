@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      //模板字符串 内部可换行 添加变量  调用函数（在调用位置显示函数执行后的返回值）
+      let name = `hgx`;
+      let sayHello = `hello,my name is ${name}`;
+      console.log(sayHello);
+      let fn = () => {
+        return "我是函数";
+      };
+      let html = `我模板字符串${fn()}`;
+      console.log(html);
+      //startsWith()  endsWith() 返回布尔值
+      //repeat() 接收数字为参数 返回一个新的字符串
+      let y = "y";
+      let x = y.repeat(5);
+      console.log(x);
+    </script>
+  </body>
+</html>

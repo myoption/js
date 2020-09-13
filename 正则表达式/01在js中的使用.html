@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      //利用RegExp创建 正则表达式 /表达式/
+      var regexp = new RegExp(/13/);
+      //利用字面量创建
+      var isOK = /13/;
+      //   var str = "15";
+      //   console.log(isOK.test(str));
+      //   var str = "sds1111d";
+      //   var rg = /^[sdf]/;
+      //   console.log("------------------");
+      //   console.log(rg.test(str));
+      //   console.log(rg.test("d222"));
+      //* 0或n  + 1或n  ？ 0或1 {n} 重复次数  {n,} 重复n或更多 {n，m} 重复n到m次
+      //   var reg = /^[abc]+/;
+      //   console.log(reg.test("aabbcc2324324"));
+      //   console.log(reg.test("33542aabbcc2324324"));
+      //   console.log(reg.test("a2abbcc2324324"));
+      // {n}
+      var reg = /^[a]{2,4}/;
+      console.log(reg.test("aaaaacccba2324324"));
+      console.log(reg.test("33542aabbcc2324324"));
+      console.log(reg.test("a2abbcc2324324"));
+    </script>
+  </body>
+</html>

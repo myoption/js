@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <input type="text" class="user-name" /><span>请输入用户名</span>
+    <script>
+      //获取元素
+      var input = document.querySelector(".user-name");
+      var span = document.querySelector("span");
+      const reg = /^[a-zA-Z0-9_-]{6,16}/;
+      /*  let isOK = false;
+      function regVerify(element) {
+        if (reg.test(element.value)) {
+          isOK = true;
+        }
+        if (isOK) {
+          span.style.color = "green";
+        } else {
+          span.style.color = "red";
+        }
+      } */
+      //   input.addEventListener("blur", regVerify(input));
+      input.onblur = function () {
+        if (reg.test(this.value)) {
+          span.style.color = "green";
+        } else {
+          span.style.color = "red";
+        }
+      };
+    </script>
+  </body>
+</html>

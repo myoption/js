@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <textarea name="" id="textarea" cols="30" rows="10"></textarea>
+    <button>提交</button>
+    <div></div>
+    <script>
+      //获取元素
+      var textarea = document.querySelector("textarea");
+      var btn = document.querySelector("button");
+      var div = document.querySelector("div");
+      //替换敏感词
+      btn.onclick = function () {
+        div.innerHTML = textarea.value.replace(/激情|基情/g, "**");
+      };
+    </script>
+  </body>
+</html>
